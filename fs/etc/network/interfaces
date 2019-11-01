@@ -18,8 +18,8 @@ iface br0 inet static
     bridge_fd 0
 
 iface br1 inet static
-    address 192.0.5.205
-    netmask 255.255.255.0
+    address 10.0.5.205
+    netmask 255.255.0.0
     bridge_ports ens5f0
     bridge_stp off
     bridge_maxwait 0
