@@ -8,4 +8,8 @@ case "$1" in
   ssh docker-2 "sudo apt-get update"
   ;;
 
+  kvm-install)
+  ssh kvm-1    "sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst"
+  ;;
+
 esac
