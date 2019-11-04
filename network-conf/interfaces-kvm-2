@@ -24,6 +24,6 @@ iface br1 inet manual
     bridge_fd 0
 
 iface br1.1001 inet static
-    address 10.0.5.204
-    netmask 255.255.0.0
+    address 192.168.10.243
+    netmask 255.255.255.0
     vlan-raw-device br1
