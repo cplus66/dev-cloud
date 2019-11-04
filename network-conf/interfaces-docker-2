@@ -8,10 +8,7 @@ auto lo br0 br1.1001
 iface enp6s0 inet manual
 iface ens5f0 inet manual
 
-iface br0 inet static
-    address 172.17.5.219
-    netmask 255.255.254.0
-    gateway 172.17.5.254
+iface br0 inet dhcp
     bridge_ports enp6s0
     bridge_stp off
     bridge_maxwait 0
