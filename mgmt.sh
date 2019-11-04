@@ -9,7 +9,7 @@ case "$1" in
   ;;
 
   kvm-install)
-  ssh kvm-1    "sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst"
+  sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
   ;;
 
 esac
