@@ -1,0 +1,20 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo eth0 eth1.1001
+
+iface lo inet loopback
+
+iface eth0 inet static
+    address 172.17.5.219
+    netmask 255.255.254.0
+    gateway 172.17.5.254
+    dns-nameservers 168.95.1.1 8.8.8.8 172.20.1.100 172.20.1.99
+    dns-search advantech.corp
+
+iface eth1.1001 inet static
+    address 192.168.10.1
+    netmask 255.255.255.0
+    vlan-raw-device eth1
+
