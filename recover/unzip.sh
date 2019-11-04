@@ -4,7 +4,7 @@
 # Description: Usage LIST="" ./unzip.sh
 # User: root
 
-if [ x$LIST == "x" ]; then
+if [ "x$LIST" == "x" ]; then
   LIST="atca-9113_2019-1004.tgz  dio-yocto_2019-1004.tgz  esp-9400-terry_2019-1004.tgz esp-3000_2019-1004.tgz"
 fi
 
