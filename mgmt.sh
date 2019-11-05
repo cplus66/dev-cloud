@@ -10,4 +10,8 @@ case "$1" in
   hosts)
   ssh kvm-1    'sudo bash -c "echo \"172.17.5.235 ga\" >> /etc/hosts"'
 
+  kvm-install)
+  sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
+  ;;
+
 esac
