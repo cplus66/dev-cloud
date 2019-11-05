@@ -204,3 +204,7 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 -timeout 0
 +timeout 100
 ```
+
+## ToDo
+
+- keepalived : Failover and monitoring daemon for LVS clusters
