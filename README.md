@@ -44,6 +44,57 @@ HOST-5
 
 # Ubuntu 18.04 Net Install with Console
 
+## DHCP Configuration
+```
+[root@localhost dhcp]# cat /etc/dhcp/dhcpd.conf 
+#
+# DHCP Server Configuration file.
+#   see /usr/share/doc/dhcp*/dhcpd.conf.example
+#   see dhcpd.conf(5) man page
+#
+option domain-name "example.com";
+
+default-lease-time 600;
+max-lease-time 7200;
+
+allow booting;
+allow bootp;
+
+subnet 192.0.2.0 netmask 255.255.255.0 {
+        range   192.0.2.100   192.0.2.200;
+        option broadcast-address 192.168.2.255;
+        option routers                  192.0.2.253;
+        option domain-name-servers      172.20.1.100;
+        option subnet-mask              255.255.255.0;
+}
+
+group {
+  next-server 192.0.2.253;
+  host tftpclient {
+  hardware ethernet 74:FE:48:08:57:C9;
+  filename "pxelinux.0";
+ }
+}
+[root@localhost dhcp]# 
+
+[root@localhost dhcp]# cat /etc/systemd/system/dhcpd.service 
+[Unit]
+Description=DHCPv4 Server Daemon
+Documentation=man:dhcpd(8) man:dhcpd.conf(5)
+Wants=network-online.target
+After=network-online.target
+After=time-sync.target
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf -user dhcpd -group dhcpd --no-pid br-cp2
+
+[Install]
+WantedBy=multi-user.target
+[root@localhost dhcp]#
+
+```
+
 ## PXE Configuration
 ```
 [root@localhost tftpboot]# diff -ru ubuntu-installer.orig ubuntu-installer
