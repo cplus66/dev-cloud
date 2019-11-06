@@ -18,9 +18,9 @@ iptables -Z
 iptables -t nat -F
 
 # Default policies
-iptables -P INPUT   DROP
-iptables -P OUTPUT  DROP
-iptables -P FORWARD DROP
+iptables -P INPUT   ACCEPT
+iptables -P OUTPUT  ACCEPT
+iptables -P FORWARD ACCEPT
 
 echo -n '1' > /proc/sys/net/ipv4/ip_forward
 echo -n '1' > /proc/sys/net/ipv4/conf/all/accept_source_route
