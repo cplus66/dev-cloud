@@ -42,11 +42,54 @@ HOST-5
 # cp fs/etc/network/interface /etc/network/
 ```
 
-# Ubuntu 18.04 Net Install with Console
+# Installation
+
+## Host OS
+OS Distribution: Ubuntu Server 18.04.3 LTS
+
+### Network
+TBD
+
+#### NAT Router
+Firewall
+
+#### VRRP
+- keepalived : Failover and monitoring daemon for LVS clusters
+TBD
+
+## Guest OS
+TBD
+
+# Administration
+
+## Launch VM
+- OS Type: CentOS 7, Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, Ubuntu 18.04 LTS
+- CPU: 1,2,4,8
+- Memory: 2048,4096, 8192, 18384 (MB)
+- Storage: 64,128, 256, 512 (GB)
+- Network: br0 (external bridge), br1 (internal bridge)
+- Security: credential
+
+## Launch Container
+
+TBD
+
+## CI/CD / Jenkins
+
+
+## Backup 
+TBD
+
+## Restore
+TBD
+
+# Others
+
+## Ubuntu 18.04 Net Install with Console
 - Use PUTTY for installation
 - Connect box to intranet
 
-## TFTP Server Configuration
+### TFTP Server Configuration
 ```
 # cat /etc/xinetd.d/tftp 
 # default: off
@@ -71,7 +114,7 @@ service tftp
 ```
 
 
-## DHCP Server Configuration
+### DHCP Server Configuration
 ```
 [root@localhost dhcp]# cat /etc/dhcp/dhcpd.conf 
 #
@@ -120,7 +163,7 @@ WantedBy=multi-user.target
 
 ```
 
-## PXE Configuration
+### PXE Configuration
 ```
 [root@localhost tftpboot]# diff -ru ubuntu-installer.orig ubuntu-installer
 diff -ru ubuntu-installer.orig/amd64/boot-screens/menu.cfg ubuntu-installer/amd64/boot-screens/menu.cfg
@@ -205,6 +248,4 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 +timeout 100
 ```
 
-## ToDo
 
-- keepalived : Failover and monitoring daemon for LVS clusters
