@@ -50,10 +50,12 @@ OS Distribution: Ubuntu Server 18.04.3 LTS
 ### Network
 TBD
 
-#### NAT Router
+#### Router VM
+
+##### NAT
 Firewall
 
-#### VRRP
+##### VRRP
 - keepalived : Failover and monitoring daemon for LVS clusters
 TBD
 
