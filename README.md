@@ -92,6 +92,9 @@ TBD
 - Connect box to intranet
 
 ### TFTP Server Configuration
+- Change disable from 'yes' to 'no'
+- tftproot is '/var/lib/tftpboot'
+
 ```
 # cat /etc/xinetd.d/tftp 
 # default: off
@@ -117,6 +120,9 @@ service tftp
 
 
 ### DHCP Server Configuration
+- domain-name-servers (TBC)
+- hardware ethernet 74:FE:48:08:57:C9 and bootfile is  "pxelinux.0"
+
 ```
 [root@localhost dhcp]# cat /etc/dhcp/dhcpd.conf 
 #
@@ -147,6 +153,10 @@ group {
   filename "pxelinux.0";
  }
 }
+```
+
+- br-cp2 is DHCP server binding interface
+```
 [root@localhost dhcp]# cat /etc/systemd/system/dhcpd.service 
 [Unit]
 Description=DHCPv4 Server Daemon
@@ -166,6 +176,7 @@ WantedBy=multi-user.target
 ```
 
 ### PXE Configuration
+
 ```
 [root@localhost tftpboot]# diff -ru ubuntu-installer.orig ubuntu-installer
 diff -ru ubuntu-installer.orig/amd64/boot-screens/menu.cfg ubuntu-installer/amd64/boot-screens/menu.cfg
@@ -180,17 +191,6 @@ diff -ru ubuntu-installer.orig/amd64/boot-screens/menu.cfg ubuntu-installer/amd6
  menu title Installer boot menu
  include ubuntu-installer/amd64/boot-screens/stdmenu.cfg
  include ubuntu-installer/amd64/boot-screens/txt.cfg
--
-+include ubuntu-installer/amd64/boot-screens/gtk.cfg
-+menu begin advanced
-+       menu title Advanced options
-+       include ubuntu-installer/amd64/boot-screens/stdmenu.cfg
-+       label mainmenu
-+               menu label ^Back..
-+               menu exit
-+       include ubuntu-installer/amd64/boot-screens/adtxt.cfg
-+       include ubuntu-installer/amd64/boot-screens/adgtk.cfg
-+menu end
  label help
         menu label ^Help
         text help
@@ -249,5 +249,8 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 -timeout 0
 +timeout 100
 ```
+
+# Reference
+- https://a.custura.eu/post/debian-via-serial-console/
 
 
