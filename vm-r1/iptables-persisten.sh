@@ -1,0 +1,1 @@
+sudo netfilter-persistent save
