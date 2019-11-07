@@ -41,3 +41,39 @@ HOST-5
 # cd dev-cloud
 # cp fs/etc/network/interface /etc/network/
 ```
+
+# VM Network Configuration
+## Ubuntu
+```
+CPU=8 RAM=16384 NET=br1 ~cplus/virt-utils/virt-install.sh vm_name image_name
+
+
+```
+
+## CentOS
+```
+mv /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0.orig
+cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
+BOOTPROTO="none"
+DEVICE="eth0"
+ONBOOT="yes"
+TYPE="Ethernet"
+EOF
+
+cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0.1001
+DEVICE=eth0.1001
+BOOTPROTO=none
+ONBOOT=yes
+IPADDR=192.168.10.12
+PREFIX=24
+NETWORK=192.168.10.0
+VLAN=yes
+EOF
+
+cat << EOF > /etc/sysconfig/network
+NETWORKING=yes
+NOZEROCONF=yes
+GATEWAY=192.168.10.1
+EOF
+
+```
