@@ -42,11 +42,96 @@ HOST-5
 # cp fs/etc/network/interface /etc/network/
 ```
 
-# Ubuntu 18.04 Net Install with Console
+<<<<<<< HEAD
+# VM Network Configuration
+## Ubuntu
+```
+CPU=8 RAM=16384 NET=br1 ~cplus/virt-utils/virt-install.sh vm_name image_name
+
+
+```
+
+## CentOS
+```
+mv /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0.orig
+cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
+BOOTPROTO="none"
+DEVICE="eth0"
+ONBOOT="yes"
+TYPE="Ethernet"
+EOF
+
+cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0.1001
+DEVICE=eth0.1001
+BOOTPROTO=none
+ONBOOT=yes
+IPADDR=192.168.10.12
+PREFIX=24
+NETWORK=192.168.10.0
+VLAN=yes
+EOF
+
+cat << EOF > /etc/sysconfig/network
+NETWORKING=yes
+NOZEROCONF=yes
+GATEWAY=192.168.10.1
+EOF
+
+```
+=======
+# Installation
+
+## Host OS
+OS Distribution: Ubuntu Server 18.04.3 LTS
+
+### Network
+TBD
+
+#### Router VM
+
+##### NAT
+Firewall
+
+##### VRRP
+- keepalived : Failover and monitoring daemon for LVS clusters
+TBD
+
+## Guest OS
+TBD
+
+# Administration
+
+## Launch VM
+- OS Type: CentOS 7, Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, Ubuntu 18.04 LTS
+- CPU: 1,2,4,8
+- Memory: 2048,4096, 8192, 18384 (MB)
+- Storage: 64,128, 256, 512 (GB)
+- Network: br0 (external bridge), br1 (internal bridge)
+- Security: credential
+
+## Launch Container
+
+TBD
+
+## CI/CD / Jenkins
+
+
+## Backup 
+TBD
+
+## Restore
+TBD
+
+# Others
+
+## Ubuntu 18.04 Net Install with Console
 - Use PUTTY for installation
 - Connect box to intranet
 
-## TFTP Server Configuration
+### TFTP Server Configuration
+- Change disable from 'yes' to 'no'
+- tftproot is '/var/lib/tftpboot'
+
 ```
 # cat /etc/xinetd.d/tftp 
 # default: off
@@ -71,7 +156,10 @@ service tftp
 ```
 
 
-## DHCP Server Configuration
+### DHCP Server Configuration
+- domain-name-servers (TBC)
+- hardware ethernet 74:FE:48:08:57:C9 and bootfile is  "pxelinux.0"
+
 ```
 [root@localhost dhcp]# cat /etc/dhcp/dhcpd.conf 
 #
@@ -102,6 +190,10 @@ group {
   filename "pxelinux.0";
  }
 }
+```
+
+- br-cp2 is DHCP server binding interface
+```
 [root@localhost dhcp]# cat /etc/systemd/system/dhcpd.service 
 [Unit]
 Description=DHCPv4 Server Daemon
@@ -120,7 +212,8 @@ WantedBy=multi-user.target
 
 ```
 
-## PXE Configuration
+### PXE Configuration
+
 ```
 [root@localhost tftpboot]# diff -ru ubuntu-installer.orig ubuntu-installer
 diff -ru ubuntu-installer.orig/amd64/boot-screens/menu.cfg ubuntu-installer/amd64/boot-screens/menu.cfg
@@ -135,17 +228,6 @@ diff -ru ubuntu-installer.orig/amd64/boot-screens/menu.cfg ubuntu-installer/amd6
  menu title Installer boot menu
  include ubuntu-installer/amd64/boot-screens/stdmenu.cfg
  include ubuntu-installer/amd64/boot-screens/txt.cfg
--
-+include ubuntu-installer/amd64/boot-screens/gtk.cfg
-+menu begin advanced
-+       menu title Advanced options
-+       include ubuntu-installer/amd64/boot-screens/stdmenu.cfg
-+       label mainmenu
-+               menu label ^Back..
-+               menu exit
-+       include ubuntu-installer/amd64/boot-screens/adtxt.cfg
-+       include ubuntu-installer/amd64/boot-screens/adgtk.cfg
-+menu end
  label help
         menu label ^Help
         text help
@@ -205,6 +287,8 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 +timeout 100
 ```
 
-## ToDo
+# Reference
+- https://a.custura.eu/post/debian-via-serial-console/
 
-- keepalived : Failover and monitoring daemon for LVS clusters
+
+>>>>>>> 8c4286829e863024679ee3c1f74848dd8f7d6414
