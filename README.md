@@ -42,7 +42,6 @@ HOST-5
 # cp fs/etc/network/interface /etc/network/
 ```
 
-<<<<<<< HEAD
 # VM Network Configuration
 ## Ubuntu
 ```
@@ -78,7 +77,6 @@ GATEWAY=192.168.10.1
 EOF
 
 ```
-=======
 # Installation
 
 ## Host OS
