@@ -291,4 +291,5 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 - https://a.custura.eu/post/debian-via-serial-console/
 
 
->>>>>>> 8c4286829e863024679ee3c1f74848dd8f7d6414
+## ToDO
+- Enlarge gw memory size from 2GB to 8GB
