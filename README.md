@@ -292,3 +292,5 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 ## ToDO
 - Enlarge gw memory size from 2GB to 8GB
 - Backup DevCloud v0.2
+- Install Local DHCP Server
+- Install Local DNS Server
