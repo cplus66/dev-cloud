@@ -294,4 +294,5 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 - Backup DevCloud v0.2
 - Install Local DHCP Server
 - Install Local DNS Server
+- Install NTP Server
 - Configure Timezone with command "timedatectl set-timezone Asia/Taipei"
