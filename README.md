@@ -287,7 +287,7 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 
 ## Reference
 - https://a.custura.eu/post/debian-via-serial-console/
-
+- https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/index
 
 ## ToDO
 - Enlarge gw memory size from 2GB to 8GB
