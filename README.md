@@ -42,7 +42,6 @@ HOST-5
 # cp fs/etc/network/interface /etc/network/
 ```
 
-<<<<<<< HEAD
 # VM Network Configuration
 ## Ubuntu
 ```
@@ -78,7 +77,6 @@ GATEWAY=192.168.10.1
 EOF
 
 ```
-=======
 # Installation
 
 ## Host OS
@@ -287,8 +285,14 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 +timeout 100
 ```
 
-# Reference
+## Reference
 - https://a.custura.eu/post/debian-via-serial-console/
+- https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/index
 
-
->>>>>>> 8c4286829e863024679ee3c1f74848dd8f7d6414
+## ToDO
+- Enlarge gw memory size from 2GB to 8GB
+- Backup DevCloud v0.2
+- Install Local DHCP Server
+- Install Local DNS Server
+- Install NTP Server
+- Configure Timezone with command "timedatectl set-timezone Asia/Taipei"
