@@ -36,6 +36,7 @@ HOST-5
 # apt install -y bridge-utils
 # apt install -y ifupdown
 # apt install -y vlan
+# apt install -y resolvconf
 # modprobe 8021q
 # git clone https://github.com/cplus66/dev-cloud.git
 # cd dev-cloud
