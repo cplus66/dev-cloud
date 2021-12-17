@@ -12,6 +12,6 @@ if [ $# -eq 0 ]; then
 fi
 
 for i in $LIST; do
-  echo "=== $i ==="
+  echo "[$i]"
   virsh -c qemu+ssh://$i/system $@
 done

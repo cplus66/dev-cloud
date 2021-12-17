@@ -16,7 +16,7 @@ KVM_LIST="kvm-1 kvm-2 kvm-3 docker-1 docker-2"
 
 function usage()
 {
-  echo "Usage: {DEBUG=1} {KVM=1} $0 <cmd> | $0 -f <shell_script>"
+  echo "Usage: {DEBUG=1} {KVM=1} {CSV=1} $0 <cmd> | $0 -f <shell_script>"
 }
 
 if [ "x$DEBUG" != "x" ]; then
@@ -52,7 +52,13 @@ else
 fi
 
 for i in $LIST; do
-  echo -n "$i, "
+  # print header
+  if [ "x$CSV" != "x" ]; then
+    echo -n "$i, "
+  else
+    echo "[$i]"
+  fi
+
   ssh $i /bin/bash -s < $tmpfile
 done
 
