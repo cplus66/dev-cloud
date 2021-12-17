@@ -25,7 +25,7 @@ function usage()
   echo "Usage: $0 <cmd> | $0 -f <shell_script>"
 }
 
-if [ x$DEBUG != "x" ]; then
+if [ "x$DEBUG" != "x" ]; then
   LIST=yocto-4
 fi
 
@@ -35,12 +35,12 @@ if [ $# -eq 0 ]; then
 fi
 
 
-if [ x$1 == "x-f" ]; then
-  if [ x$2 != "x" ]; then
+if [ "x$1" == "x-f" ]; then
+  if [ "x$2" != "x" ]; then
     if [ -f $2 ]; then
       tmpfile=$2
     else
-      echo "File $2 doesn't exist" 
+      echo "File $2 doesn't exist"
     fi
   else
     echo "Usage $0 -f <shell_script>"
@@ -50,7 +50,7 @@ else
   tmpfile=$(mktemp /tmp/mgmt.XXX)
   REMOTE_CMD=$@
 
-  echo $REMOTE_CMD > $tmpfile 
+  echo $REMOTE_CMD > $tmpfile
 fi
 
 for i in $LIST; do
@@ -58,6 +58,6 @@ for i in $LIST; do
   ssh $i /bin/bash -s < $tmpfile
 done
 
-if [ x$REMOTE_CMD != "x" ]; then
+if [ "x$REMOTE_CMD" != "x" ]; then
   rm -f $tmpfile
 fi
