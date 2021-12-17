@@ -19,6 +19,10 @@ yocto-3 \
 yocto-4 \
 "
 
+if [ x$DEBUG != "x" ]; then
+  LIST=yocto-4
+fi
+
 if [ $# -eq 0 ]; then
   echo "Usage: $0 <cmd>"
   exit 0
