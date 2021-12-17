@@ -20,6 +20,8 @@ yocto-3 \
 yocto-4 \
 "
 
+KVM_LIST="kvm-1 kvm-2 kvm-3 docker-1 docker-2"
+
 function usage()
 {
   echo "Usage: $0 <cmd> | $0 -f <shell_script>"
@@ -27,6 +29,10 @@ function usage()
 
 if [ "x$DEBUG" != "x" ]; then
   LIST=yocto-4
+fi
+
+if [ "x$KVM" != "x" ]; then
+  LIST=$KVM_LIST
 fi
 
 if [ $# -eq 0 ]; then
