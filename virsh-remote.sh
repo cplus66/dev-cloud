@@ -13,5 +13,5 @@ fi
 
 for i in $LIST; do
   echo "[$i]"
-  virsh -c qemu+ssh://$i/system $@
+  virsh -c qemu+ssh://$i/system $@ | tee list/$i
 done
