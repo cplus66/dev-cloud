@@ -27,6 +27,10 @@ if [ "x$KVM" != "x" ]; then
   LIST=$KVM_LIST
 fi
 
+if [ "x$MY_LIST" != "x" ]; then
+  LIST=$MY_LIST
+fi
+
 if [ $# -eq 0 ]; then
   usage
   exit 0
