@@ -16,7 +16,7 @@ KVM_LIST="kvm-1 kvm-2 kvm-3 docker-1 docker-2"
 
 function usage()
 {
-  echo "Usage: {DEBUG=1} {KVM=1} {CSV=1} $0 <cmd> | $0 -f <shell_script>"
+  echo "Usage: {DEBUG=1} {KVM=1} {CSV=1} {MY_LIST=list} $0 <cmd> | $0 -f <shell_script>"
 }
 
 if [ "x$DEBUG" != "x" ]; then
