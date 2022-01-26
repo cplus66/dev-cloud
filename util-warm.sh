@@ -1,0 +1,1 @@
+ps auxw | grep warmup

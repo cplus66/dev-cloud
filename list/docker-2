@@ -6,7 +6,6 @@ kernel
 openssl-0
 openssl-1
 openssl-2
+ovc
 vega-3500-sc-0
 yocto-4
-ovc
-
