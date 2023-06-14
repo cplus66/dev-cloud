@@ -2,19 +2,19 @@
 
 LIST=$(cat host-vm.conf)
 
-KVM_LIST="kvm-1 kvm-2 kvm-3 docker-1 docker-2"
+SERVER_LIST=$(cat host-server.conf)
 
 function usage()
 {
-  echo "Usage: {DEBUG=1} {KVM=1} {CSV=1} {MY_LIST=list} $0 <cmd> | $0 -f <shell_script>"
+  echo "Usage: {DEBUG=1} {SERVER=1} {CSV=1} {MY_LIST=list} $0 <cmd> | $0 -f <shell_script>"
 }
 
 if [ "x$DEBUG" != "x" ]; then
-  LIST=yocto-4
+  LIST=yocto-0
 fi
 
-if [ "x$KVM" != "x" ]; then
-  LIST=$KVM_LIST
+if [ "x$SERVER" != "x" ]; then
+  LIST=$SERVER_LIST
 fi
 
 if [ "x$MY_LIST" != "x" ]; then
