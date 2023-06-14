@@ -1,5 +1,5 @@
 #!/bin/bash
-LIST="kvm-1 kvm-2 kvm-3 docker-1 docker-2"
+LIST=$(cat host-server.conf)
 
 function usage()
 {
