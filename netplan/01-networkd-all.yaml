@@ -1,0 +1,16 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens3:
+      dhcp4: no
+  vlans:
+    ens3.1001:
+      id: 1001
+      link: ens3
+      addresses: [ "192.168.10.42/24" ]
+      nameservers:
+        addresses: [ "8.8.8.8" ]
+      routes:
+        - to: default
+          via: 192.168.10.1
