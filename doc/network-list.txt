@@ -1,0 +1,160 @@
+kvm-1
+-----
+root@kvm-1:/etc/network# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br0             8000.74fe48091653       no              enp6s0
+                                                        vnet5
+br1             8000.000babf35020       no              ens5f0
+                                                        vnet0
+                                                        vnet1
+                                                        vnet2
+                                                        vnet3
+                                                        vnet4
+                                                        vnet6
+                                                        vnet7
+virbr0          8000.525400c8a463       yes             virbr0-nic
+root@kvm-1:/etc/network# ifconfig br0
+br0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.5.203  netmask 255.255.254.0  broadcast 172.17.5.255
+        inet6 fe80::76fe:48ff:fe09:1653  prefixlen 64  scopeid 0x20<link>
+        ether 74:fe:48:09:16:53  txqueuelen 1000  (Ethernet)
+        RX packets 8765398  bytes 761365855 (761.3 MB)
+        RX errors 0  dropped 4123931  overruns 0  frame 0
+        TX packets 33315  bytes 3390302 (3.3 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@kvm-1:/etc/network# ifconfig br1
+br1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::20b:abff:fef3:5020  prefixlen 64  scopeid 0x20<link>
+        ether 00:0b:ab:f3:50:20  txqueuelen 1000  (Ethernet)
+        RX packets 209445  bytes 29040147 (29.0 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 18167  bytes 15596086 (15.5 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+kvm-2
+-----
+
+root@kvm-2:~# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br0             8000.74fe4808f039       no              enp6s0
+br1             8000.000babf35028       no              ens5f0
+                                                        vnet0
+                                                        vnet1
+                                                        vnet2
+                                                        vnet3
+                                                        vnet4
+                                                        vnet5
+virbr0          8000.525400a670b1       yes             virbr0-nic
+
+
+root@kvm-2:~# ifconfig enp6s0
+enp6s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 74:fe:48:08:f0:39  txqueuelen 1000  (Ethernet)
+        RX packets 11201832  bytes 1507844751 (1.5 GB)
+        RX errors 0  dropped 235  overruns 0  frame 0
+        TX packets 44058  bytes 5233935 (5.2 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device memory 0xc7100000-c717ffff
+
+root@kvm-2:~# ifconfig ens5f0
+ens5f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 00:0b:ab:f3:50:28  txqueuelen 1000  (Ethernet)
+        RX packets 381372  bytes 126945151 (126.9 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 168568  bytes 84373620 (84.3 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+kvm-3
+-----
+root@kvm-3:/etc/network# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br0             8000.74fe480857ca       no              enp6s0
+br1             8000.000babf1e964       no              ens5f0
+                                                        vnet0
+                                                        vnet1
+                                                        vnet2
+virbr0          8000.525400242a96       yes             virbr0-nic
+
+root@kvm-3:/etc/network# ifconfig enp6s0
+enp6s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 74:fe:48:08:57:ca  txqueuelen 1000  (Ethernet)
+        RX packets 297458  bytes 43227607 (43.2 MB)
+        RX errors 0  dropped 30  overruns 0  frame 0
+        TX packets 462  bytes 140231 (140.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device memory 0xc7100000-c717ffff
+
+root@kvm-3:/etc/network# ifconfig ens5f0
+ens5f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 00:0b:ab:f1:e9:64  txqueuelen 1000  (Ethernet)
+        RX packets 13247  bytes 4969833 (4.9 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 9009  bytes 6496007 (6.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker-1
+--------
+
+root@docker-1:/etc/network# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br0             8000.74fe4818b61f       no              enp6s0
+br1             8000.000babf4f66e       no              ens5f0
+                                                        vnet0
+                                                        vnet1
+                                                        vnet2
+                                                        vnet3
+                                                        vnet4
+                                                        vnet5
+docker0         8000.0242ef50762d       no
+virbr0          8000.5254000ba204       yes             virbr0-nic
+root@docker-1:/etc/network# ifconfig enp6s0
+enp6s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 74:fe:48:18:b6:1f  txqueuelen 1000  (Ethernet)
+        RX packets 11192007  bytes 1496787843 (1.4 GB)
+        RX errors 0  dropped 63  overruns 0  frame 0
+        TX packets 24368  bytes 3927705 (3.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device memory 0xc7100000-c717ffff
+
+root@docker-1:/etc/network# ifconfig ens5f0
+ens5f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 00:0b:ab:f4:f6:6e  txqueuelen 1000  (Ethernet)
+        RX packets 378859  bytes 125676796 (125.6 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 104048  bytes 56573072 (56.5 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker-2
+--------
+
+root@docker-2:~# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br0             8000.74fe4818b62c       no              enp6s0
+br1             8000.000babf4f69d       no              ens5f1
+                                                        vnet0
+                                                        vnet1
+                                                        vnet2
+                                                        vnet3
+                                                        vnet4
+                                                        vnet5
+                                                        vnet6
+docker0         8000.02425b511a7d       no
+virbr0          8000.52540033fc8e       yes             virbr0-nic
+root@docker-2:~# ifconfig enp6s0
+enp6s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 74:fe:48:18:b6:2c  txqueuelen 1000  (Ethernet)
+        RX packets 11254879  bytes 1506333813 (1.5 GB)
+        RX errors 0  dropped 1384  overruns 0  frame 0
+        TX packets 36662  bytes 4636715 (4.6 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device memory 0xc7100000-c717ffff
+
+root@docker-2:~# ifconfig ens5f1
+ens5f1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        ether 00:0b:ab:f4:f6:9d  txqueuelen 1000  (Ethernet)
+        RX packets 411333  bytes 193811797 (193.8 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 166480  bytes 72450984 (72.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
