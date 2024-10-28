@@ -1,0 +1,22 @@
+KVM-1
+-----
+
+ssh -6 cplus@fe80::76fe:48ff:fe09:1653%eth0
+
+KVM-2
+-----
+
+ssh -6 cplus@fe80::76fe:48ff:fe08:f039%eth0
+
+KVM-3
+-----
+ssh -6 cplus@fe80::76fe:48ff:fe08:57ca%eth0
+
+DOCKER-1
+--------
+ssh -6 cplus@fe80::76fe:48ff:fe18:b61f%eth0
+
+DOCKER-2
+--------
+ssh -6 cplus@fe80::76fe:48ff:fe18:b62c%eth0
+
