@@ -1,0 +1,30 @@
+Date: 2024-1028
+---------------
+
+1. serial port cannot login
+- serial-getty@ttyS0.service is up
+
+2. no mgmt port(1GbE) config and not connect to local LAN (172.17.4.0/23).
+- use ipv6 instead.
+- dhclient cannot get ipv4 address.
+- MAC is blocked by IT.
+
+workaround
+==========
+iface br0 inet dhcp
+    hwaddress ether 74:fe:48:08:57:cc
+    bridge_ports enp6s0
+    bridge_stp off
+    bridge_maxwait 0
+    bridge_fd 0
+    dns-nameservers 8.8.8.8
+
+3. no ens5f0 (10GbE) donesn'k link up
+- TBC
+
+4. datatimectl is not correct.
+- 2022-01-10 14:29:04 
+
+Debug
+-----
+- vga -> console -> network internal/external ipv4/ipv6 -> network internal/external ipv4/ipv6
