@@ -1,4 +1,10 @@
-# Host List
+# Dev Cloud
+
+## Security
+- Root password
+- Disable root ssh login
+
+## Host List
 ```
 SWITCH
 
@@ -9,26 +15,29 @@ HOST-0
 
 HOST-1
   Name: kvm-1
-  IP: 172.17.4.254
+  IP: 172.17.5.203
   Description: KVM Development
 
 HOST-2
   Name: kvm-2
-  IP: 172.17.4.11
+  IP: 172.17.5.204
   Description: KVM Development
 
 HOST-3
+  Name: kvm-3
+  IP: DHCP
+  Description: KVM Development
   #ERR: VGA
 
 HOST-4
   Name: docker-1
-  IP: 172.17.5.1 
-  Description: Docker Development
+  IP: 172.17.5.116 
+  Description: KVM or Docker Development
 
 HOST-5
   Name: docker-2
-  IP: 172.17.5.39
-  Description: Docker Development
+  IP: 172.17.5.117
+  Description: KVM or Docker Development
 ```
 
 # Prerequisite
