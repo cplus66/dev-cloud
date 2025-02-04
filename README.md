@@ -1,8 +1,9 @@
 # Dev Cloud
 
 ## Security
-- Root password
-- Disable root ssh login
+- Root password hard to hack.
+- Disable root ssh login.
+- Use ssh login with certificate and disable password login.
 
 ## Host List
 ```
