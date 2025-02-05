@@ -3,7 +3,7 @@
 ## Security
 - Root password hard to hack.
 - Disable root ssh login.
-- Use ssh login with certificate and disable password login.
+- Disable ssh password login.
 
 ## Host List
 ```
