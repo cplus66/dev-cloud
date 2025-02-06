@@ -106,6 +106,21 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 /sbin/iptables -t nat -A POSTROUTING -j MASQUERADE
 ```
 
+### DNAT (Destination NAT)
+
+- Forward 2020 port to 192.168.10.2 port 20
+```
+iptables -t nat -A PREROUTING -p tcp -i ens3 --dport 2020 -j DNAT --to-destination 192.168.10.2:22
+iptables -A FORWARD -p tcp -d 192.168.10.2 --dport 2020 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+```
+
+- Forward 8080 port to 192.168.10.2 port 8080
+```
+iptables -t nat -A PREROUTING -p tcp -i ens3 --dport 8080 -j DNAT --to-destination 192.168.10.2:8080
+iptables -A FORWARD -p tcp -d 192.168.10.2 --dport 8080 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+```
+
+
 ### VRRP
 - keepalived : Failover and monitoring daemon for LVS clusters
 TBD
