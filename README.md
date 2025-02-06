@@ -4,6 +4,7 @@
 - Root password hard to hack.
 - Disable root ssh login.
 - Disable ssh password login.
+- Reset Jenkins admin password.
 
 ## Host List
 ```
