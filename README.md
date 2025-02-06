@@ -45,10 +45,10 @@ HOST-5
 OS Distribution: Ubuntu Server 18.04.3 LTS or newer.
 
 ### Network
-'''
+```
 iptables -A FORWARD -p all -i br0 -j ACCEPT
 virsh net-destroy default
-'''
+```
 
 ## VM Prerequisite
 
@@ -100,10 +100,10 @@ EOF
 ## Router VM 
 
 ### NAT
-'''
+```
 echo 1 > /proc/sys/net/ipv4/ip_forward
 /sbin/iptables -t nat -A POSTROUTING -j MASQUERADE
-'''
+```
 
 ### VRRP
 - keepalived : Failover and monitoring daemon for LVS clusters
