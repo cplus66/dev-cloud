@@ -123,6 +123,7 @@ TBD
 
 ## CI/CD / Jenkins
 
+- OpenJDK 17.0.3
 - Enable HTTPS
 - https://stackoverflow.com/questions/40126736/enable-https-in-jenkins
 
