@@ -4,6 +4,7 @@
 - Root password hard to hack.
 - Disable root ssh login.
 - Disable ssh password login.
+- Reset Jenkins admin password.
 
 ## Host List
 ```
@@ -41,7 +42,17 @@ HOST-5
   Description: KVM or Docker Development
 ```
 
-# Prerequisite
+## Host OS Prerequisite
+OS Distribution: Ubuntu Server 18.04.3 LTS or newer.
+
+### Network
+```
+iptables -A FORWARD -p all -i br0 -j ACCEPT
+virsh net-destroy default
+```
+
+## VM Prerequisite
+
 ```
 # apt install -y bridge-utils
 # apt install -y ifupdown
@@ -53,15 +64,13 @@ HOST-5
 # cp fs/etc/network/interface /etc/network/
 ```
 
-# VM Network Configuration
-## Ubuntu
+## VM Launch 
+### Ubuntu
 ```
 CPU=8 RAM=16384 NET=br1 ~cplus/virt-utils/virt-install.sh vm_name image_name
-
-
 ```
 
-## CentOS
+### CentOS
 ```
 mv /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0.orig
 cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -88,29 +97,38 @@ GATEWAY=192.168.10.1
 EOF
 
 ```
-# Installation
 
-## Host OS
-OS Distribution: Ubuntu Server 18.04.3 LTS
+## Router VM 
 
-### Network
-TBD
+### NAT
+```
+echo 1 > /proc/sys/net/ipv4/ip_forward
+/sbin/iptables -t nat -A POSTROUTING -j MASQUERADE
+```
 
-#### Router VM
+### DNAT (Destination NAT)
 
-##### NAT
-Firewall
+- Forward 2020 port to 192.168.10.2 port 20
+```
+iptables -t nat -A PREROUTING -p tcp -i ens3 --dport 2020 -j DNAT --to-destination 192.168.10.2:22
+iptables -A FORWARD -p tcp -d 192.168.10.2 --dport 2020 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+```
 
-##### VRRP
+- Forward 8080 port to 192.168.10.2 port 8080
+```
+iptables -t nat -A PREROUTING -p tcp -i ens3 --dport 8080 -j DNAT --to-destination 192.168.10.2:8080
+iptables -A FORWARD -p tcp -d 192.168.10.2 --dport 8080 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+```
+
+
+### VRRP
 - keepalived : Failover and monitoring daemon for LVS clusters
 TBD
 
-## Guest OS
-TBD
 
-# Administration
+## Administration
 
-## Launch VM
+### Launch VM Configuration
 - OS Type: CentOS 7, Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, Ubuntu 18.04 LTS
 - CPU: 1,2,4,8
 - Memory: 2048,4096, 8192, 18384 (MB)
@@ -118,12 +136,15 @@ TBD
 - Network: br0 (external bridge), br1 (internal bridge)
 - Security: credential
 
-## Launch Container
-
-TBD
-
 ## CI/CD / Jenkins
 
+### Installation
+- OpenJDK 17.0.3
+- https://www.jenkins.io/doc/book/installing/
+
+
+### Enable HTTPS
+- https://stackoverflow.com/questions/40126736/enable-https-in-jenkins
 
 ## Backup 
 TBD
@@ -131,9 +152,9 @@ TBD
 ## Restore
 TBD
 
-# Others
+## Others
 
-## Ubuntu 18.04 Net Install with Console
+### Ubuntu 18.04 Net Install with Console
 - Use PUTTY for installation
 - Connect box to intranet
 
@@ -300,7 +321,7 @@ diff -ru ubuntu-installer.orig/amd64/pxelinux.cfg/default ubuntu-installer/amd64
 - https://a.custura.eu/post/debian-via-serial-console/
 - https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/index
 
-## ToDO
+## ToDo
 - Enlarge gw memory size from 2GB to 8GB
 - Backup DevCloud v0.2
 - Install Local DHCP Server
