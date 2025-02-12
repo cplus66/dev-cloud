@@ -31,6 +31,31 @@ iface br1.1001 inet static
     vlan-raw-device br1
 ```
 
+- /etc/netplan/01-networkd-all.yaml (TBC)
+
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp6s0:
+      dhcp4: false
+    ens5f0:
+      dhcp4: false
+  bridges:
+    br0:
+      addresses: [ 172.17.5.203/23 ]
+      interfaces: [ enp6s0 ]
+    br1:
+      addresses: [ 192.168.10.242/24 ]
+      interfaces: [ vlan1001 ]
+  vlans:
+    vlan1001:
+      accept-ra: no
+      id: 1001
+      link: ens5f0
+```
+
 - /etc/rc.local
 
 ```
