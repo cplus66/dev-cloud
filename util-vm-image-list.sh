@@ -1,2 +1,2 @@
 #!/bin/bash -xe
-ls -l /var/lib/libvirt/images/*.[iq]*
+ls -lSh /var/lib/libvirt/images/*.[iq]*
