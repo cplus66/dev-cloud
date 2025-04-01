@@ -13,5 +13,5 @@ fi
 
 for i in $LIST; do
   echo "[$i]"
-  virsh -c qemu+ssh://$i/system $@ | grep "\S" |  tee list/$i
+  virsh -c qemu+ssh://$i/system $@ | grep "\S"
 done
