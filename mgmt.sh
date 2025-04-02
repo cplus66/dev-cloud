@@ -53,7 +53,13 @@ for i in $LIST; do
     echo "[$i]"
   fi
 
-  ssh $i /bin/bash -s < $tmpfile
+  if [ $i == "or" ]; then
+    ssh $i /bin/bash -s < util-info-or.sh
+  elif [ $i == "mic-server" ]; then
+    ssh $i /bin/bash -s < util-info-mic-server.sh
+  else
+    ssh $i /bin/bash -s < $tmpfile
+  fi
 done
 
 if [ "x$REMOTE_CMD" != "x" ]; then
