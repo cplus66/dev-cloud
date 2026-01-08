@@ -24,6 +24,17 @@ root@kvm-1:~# ip addr s dev br1.1001
        valid_lft forever preferred_lft forever
 ```
 
+```
+2: enp5s0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000                                         
+    link/ether 74:fe:48:09:16:52 brd ff:ff:ff:ff:ff:ff                                                                          
+3: enp6s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq master br0 state DOWN group default qlen 1000                  
+    link/ether 74:fe:48:09:16:53 brd ff:ff:ff:ff:ff:ff                                                                          
+4: ens5f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br1 state UP group default qlen 1000                      
+    link/ether 00:0b:ab:f3:50:20 brd ff:ff:ff:ff:ff:ff                                                                          
+5: ens5f1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000                                         
+    link/ether 00:0b:ab:f3:50:21 brd ff:ff:ff:ff:ff:ff
+```
+
 ## KVM-2
 
 ```
@@ -44,6 +55,17 @@ root@kvm-2:~# ip addr s dev br1.1001
        valid_lft forever preferred_lft forever
 ```
 
+```
+2: enp5s0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000                                         
+    link/ether 74:fe:48:08:f0:38 brd ff:ff:ff:ff:ff:ff                                                                          
+3: enp6s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000                             
+    link/ether 74:fe:48:08:f0:39 brd ff:ff:ff:ff:ff:ff                                                                          
+4: ens5f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br1 state UP group default qlen 1000
+    link/ether 00:0b:ab:f3:50:28 brd ff:ff:ff:ff:ff:ff
+5: ens5f1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 00:0b:ab:f3:50:29 brd ff:ff:ff:ff:ff:ff
+```
+
 ## KVM-3
 
 ```
@@ -56,6 +78,17 @@ root@kvm-3:~# ip addr s dev br1.1001
        valid_lft forever preferred_lft forever
     inet6 fe80::20b:abff:fef1:e964/64 scope link 
        valid_lft forever preferred_lft forever
+```
+
+```
+2: enp5s0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 74:fe:48:08:57:c9 brd ff:ff:ff:ff:ff:ff
+3: enp6s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 74:fe:48:08:57:ca brd ff:ff:ff:ff:ff:ff
+4: ens5f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br1 state UP group default qlen 1000
+    link/ether 00:0b:ab:f1:e9:64 brd ff:ff:ff:ff:ff:ff
+5: ens5f1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 00:0b:ab:f1:e9:65 brd ff:ff:ff:ff:ff:ff
 ```
 
 ## docker-1
@@ -83,6 +116,17 @@ root@docker-1:~# ip addr s dev br1.1001
        valid_lft forever preferred_lft forever
 ```
 
+```
+2: enp5s0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000                                         
+    link/ether 74:fe:48:18:b6:1e brd ff:ff:ff:ff:ff:ff                                                                          
+3: ens5f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br1 state UP group default qlen 1000                      
+    link/ether 00:0b:ab:f4:f6:6e brd ff:ff:ff:ff:ff:ff                                                                          
+4: enp6s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000                             
+    link/ether 74:fe:48:18:b6:1f brd ff:ff:ff:ff:ff:ff                                                                          
+5: ens5f1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000                                         
+    link/ether 00:0b:ab:f4:f6:6f brd ff:ff:ff:ff:ff:ff 
+```
+
 ## docker-2
 
 ```
@@ -103,6 +147,19 @@ root@docker-2:~# ip addr s dev br1.1001
        valid_lft forever preferred_lft forever
     inet6 fe80::20b:abff:fef4:f69d/64 scope link 
        valid_lft forever preferred_lft forever
+```
+
+```
+2: enp5s0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000                                         
+    link/ether 74:fe:48:18:b6:2b brd ff:ff:ff:ff:ff:ff                                                                          
+3: enp6s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br0 state UP group default qlen 1000                      
+    link/ether 74:fe:48:18:b6:2c brd ff:ff:ff:ff:ff:ff                                                                          
+    inet6 fe80::76fe:48ff:fe18:b62c/64 scope link                                                                               
+       valid_lft forever preferred_lft forever                                                                                  
+4: ens5f0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000                                         
+    link/ether 00:0b:ab:f4:f6:9c brd ff:ff:ff:ff:ff:ff                                                                          
+5: ens5f1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br1 state UP group default qlen 1000                      
+    link/ether 00:0b:ab:f4:f6:9d brd ff:ff:ff:ff:ff:ff 
 ```
 
 ## Snoopy
@@ -152,7 +209,6 @@ root@Orochimaru:~# ip addr
        valid_lft forever preferred_lft forever
     inet6 fe80::c67d:4fff:fe7b:7ab/64 scope link 
        valid_lft forever preferred_lft forever
-
 ```
 
 ## MIC-Server
@@ -173,4 +229,32 @@ root@mic-server:~# ip addr s dev br0
        valid_lft forever preferred_lft forever
     inet6 fe80::44f6:5fff:fef0:dbf0/64 scope link 
        valid_lft forever preferred_lft forever
+```
+
+## IPv6 access
+
+```
+kvm-1:
+ssh cplus@fe80::20b:abff:fef3:5020%br1.1001
+
+kvm-2:
+ssh cplus@fe80::20b:abff:fef3:5028%br1.1001
+
+kvm-3:
+ssh cplus@fe80::20b:abff:fef1:e964%br1.1001
+
+docker-1:
+ssh cplus@fe80::20b:abff:fef4:f66e%br1.1001
+
+docker-2:
+ssh cplus@fe80::20b:abff:fef4:f69d%br1.1001
+
+snoopy:
+ssh cplus@fe80::20c:29ff:fe45:f29c%eth0
+
+or:
+ssh cplus@fe80::c67d:4fff:fe7b:7aa%eth0
+
+mic-server:
+ssh cplus@fe80::44f6:5fff:fef0:dbf0%br0
 ```
