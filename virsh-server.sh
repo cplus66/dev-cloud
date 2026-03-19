@@ -1,5 +1,5 @@
 #!/bin/bash
-LIST=$(cat host-server.conf)
+LIST=$(cat host-server.conf | grep -v or)
 
 function usage()
 {

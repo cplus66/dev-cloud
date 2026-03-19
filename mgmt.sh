@@ -53,9 +53,9 @@ for i in $LIST; do
     echo "[$i]"
   fi
 
-  if [ $i == "or" ]; then
+  if [ $i == "or" -a $tmpfile == "util-info.sh" ]; then
     ssh $i /bin/bash -s < util-info-or.sh
-  elif [ $i == "mic-server" ]; then
+  elif [ $i == "mic-server" -a $tmpfile == "util-info.sh" ]; then
     ssh $i /bin/bash -s < util-info-mic-server.sh
   else
     ssh $i /bin/bash -s < $tmpfile
