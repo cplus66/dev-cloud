@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
-LIST=$(cat host-vm.conf)
+LIST=$(cat host-vm.conf | egrep -v '^#')
 
-SERVER_LIST=$(cat host-server.conf)
+SERVER_LIST=$(cat host-server.conf | egrep -v '^#')
 
 function usage()
 {
