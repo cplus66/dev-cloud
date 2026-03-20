@@ -14,4 +14,7 @@ fi
 for i in $LIST; do
   echo "[$i]"
   virsh -c qemu+ssh://$i/system domblklist $1 | grep "\S"
+  if [ $? -eq 0 ]; then
+    break
+  fi
 done
